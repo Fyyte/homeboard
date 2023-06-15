@@ -3,10 +3,12 @@
 	import wallstreetbets from '$lib/assets/wallstreetbets.png';
 	import trollFace from '$lib/assets/troll-meme.png';
 	import mkbhd from '$lib/assets/mkbhd.png';
+	import Offis from '$lib/components/Offis.svelte';
 </script>
 
 <section class="content">
 	<div class="featured" />
+	<Offis />
 </section>
 
 <style lang="postcss">

@@ -10,7 +10,6 @@
 </script>
 
 <main>
-	<Header />
 	{#if $navigating}
 		<div class="spinner">
 			<Spinner />
@@ -18,7 +17,6 @@
 	{:else}
 		<slot />
 	{/if}
-	<Footer />
 </main>
 
 <style lang="postcss">
