@@ -1,0 +1,57 @@
+@import 'reset.css';
+@import 'settings.css';
+@import 'pollen.css';
+button {
+	font: var(--text-xs);
+	cursor: pointer;
+	background: var(--color-primary);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+	transition: box-shadow 0.3s ease-in-out;
+}
+body {
+	background: var(--color-gray-900);
+	/* 	background-image: radial-gradient(circle, rgba(58, 58, 58, 0.75) 2px, var(--color-gray-900) 0);
+	background-size: 30px 30px;
+	background-position: 0 0, 15px 15px; */
+	font: var(--text-xs);
+	color: white;
+}
+input,
+textarea {
+	background: var(--color-gray-500);
+	color: white;
+}
+button.unstyled {
+	border: none;
+	background: none;
+	padding: 0;
+	margin: 0;
+}
+
+a {
+	color: inherit;
+}
+
+small {
+	font-size: var(--scale-00);
+}
+
+section.content {
+	padding: var(--size-content-py) var(--size-content-px);
+}
+
+@media only screen and (max-width: 600px) {
+	section.content {
+		padding: 15px;
+	}
+}
+
+.center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h1 {
+	color: var(--color-primary-500);
+}

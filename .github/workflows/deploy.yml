@@ -1,0 +1,42 @@
+name: deploy to caprover
+
+env:
+  CONTEXT_DIR: '.'
+  IMAGE_NAME: ${{ github.repository }}/marduk
+  DOCKERFILE: Dockerfile
+  CAPROVER_APP: marduk
+  CAPROVER_HOST: https://captain.bleff.xyz
+  DOCKER_REGISTRY: ghcr.io
+  # .env for BUILD
+  POCKETBASE_URL: ${{ secrets.POCKETBASE_URL}}
+  POCKETBASE_ADMIN_USERNAME: ${{ secrets.POCKETBASE_ADMIN_USERNAME}}
+  POCKETBASE_ADMIN_PASSWORD: ${{ secrets.POCKETBASE_ADMIN_PASSWORD}}
+  NITTER_URL: ${{ secrets.NITTER_URL}}
+
+on: [workflow_dispatch]
+
+jobs:
+  publish-app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: |
+          echo "IMAGE_NAME_WITH_REGISTRY=$DOCKER_REGISTRY/$IMAGE_NAME" >> $GITHUB_ENV
+          export IMAGE_NAME_WITH_REGISTRY=$DOCKER_REGISTRY/$IMAGE_NAME
+          echo "FULL_IMAGE_NAME=$IMAGE_NAME_WITH_REGISTRY:$GITHUB_SHA-gitsha" >> $GITHUB_ENV
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.DOCKER_REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and Push Release to Docker Registry
+        shell: bash
+        run: ./build_and_push_oida.sh
+      - name: Deploy to CapRover
+        uses: floms/action-caprover@bc835272f3c1ec1a470d80d44fc2a4518eb85d9d
+        with:
+          host: ${{ env.CAPROVER_HOST }}
+          app: ${{ env.CAPROVER_APP }}
+          password: '${{ secrets.CAPROVER_PASSWORD }}'
+          image: '${{ env.FULL_IMAGE_NAME }}'

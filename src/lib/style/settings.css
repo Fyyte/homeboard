@@ -1,0 +1,4 @@
+:root {
+  --size-content-px: max(var(--size-8), (100vw - var(--width-content-max)) / 2);
+  --size-content-py: var(--size-8);
+}
