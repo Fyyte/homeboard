@@ -2,9 +2,9 @@ name: deploy to caprover
 
 env:
   CONTEXT_DIR: '.'
-  IMAGE_NAME: ${{ github.repository }}/marduk
+  IMAGE_NAME: ${{ github.repository }}/homeboard
   DOCKERFILE: Dockerfile
-  CAPROVER_APP: marduk
+  CAPROVER_APP: homeboard
   CAPROVER_HOST: https://captain.bleff.xyz
   DOCKER_REGISTRY: ghcr.io
   # .env for BUILD
