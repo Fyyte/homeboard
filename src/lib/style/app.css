@@ -37,7 +37,7 @@ small {
 }
 
 section.content {
-	padding: var(--size-content-py) var(--size-content-px);
+	padding: var(--size-content-py);
 }
 
 @media only screen and (max-width: 600px) {

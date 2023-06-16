@@ -35,7 +35,7 @@
 		border-radius: 10px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 		padding: 20px;
-		margin: 20px;
+		margin: 25px;
 		color: #18b955;
 		font-size: 20px;
 		font-family: 'Press Start 2P', sans-serif;
