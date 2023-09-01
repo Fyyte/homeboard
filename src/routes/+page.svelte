@@ -35,7 +35,7 @@
 
 	onMount(() => {
 		if (data.stopids.length === 0) return;
-		const searchInterval = setInterval(() => stopSearch(), 10000);
+		const searchInterval = setInterval(() => stopSearch(), 30000);
 		stopSearch();
 
 		const counterInterval = setInterval(updateCounter, 1000);
