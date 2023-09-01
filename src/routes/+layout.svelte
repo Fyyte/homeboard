@@ -6,8 +6,6 @@
 	import '$lib/style/app.css';
 	import Spinner from '$lib/components/Spinner.svelte';
 	import { setAuthContext } from '$lib/auth-context';
-	export let data;
-	setAuthContext(data.user);
 </script>
 
 <main>

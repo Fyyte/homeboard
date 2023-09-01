@@ -12,7 +12,7 @@
 	});
 </script>
 
-<a
+<!-- <a
 	class="weatherwidget-io"
 	href="https://forecast7.com/de/48d2116d37/vienna/"
 	data-label_1="VIENNA"
@@ -21,4 +21,4 @@
 	data-icons="Climacons Animated"
 	data-days="3"
 	data-theme="weather_one">VIENNA 1050</a
->
+> -->
