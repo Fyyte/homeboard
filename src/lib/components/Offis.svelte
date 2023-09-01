@@ -7,6 +7,9 @@
 	{#if !monitors}
 		Loading...
 	{:else}
+		{#if monitors.length === 0}
+			<h1>Keine Information vorhanden</h1>
+		{/if}
 		{#each monitors as monitor}
 			<h1>{monitor.locationStop.properties.title}</h1>
 			{#each monitor.lines as line}

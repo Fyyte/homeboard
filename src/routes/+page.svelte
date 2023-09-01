@@ -8,10 +8,25 @@
 	let timeSinceLastRefetch;
 
 	async function stopSearch() {
-		const response = await fetch('/stopSearch?stopid=' + data.stopids.join(','));
-		const responseData = await response.json(); // Renamed to responseData
-		monitors = [...responseData]; // Using responseData
-		lastUpdated = new Date();
+		try {
+			const response = await fetch('/stopSearch?stopid=' + data.stopids.join(','));
+
+			if (!response.ok) {
+				throw new Error(`API returned status code: ${response.status}`);
+			}
+
+			const responseData = await response.json();
+			if (responseData.error) {
+				monitors = [];
+				throw new Error(responseData.error);
+			} else {
+				monitors = [...responseData];
+			}
+		} catch (error) {
+			console.error('An error occurred:', error);
+		} finally {
+			lastUpdated = new Date();
+		}
 	}
 
 	function updateCounter() {
@@ -19,6 +34,7 @@
 	}
 
 	onMount(() => {
+		if (data.stopids.length === 0) return;
 		const searchInterval = setInterval(() => stopSearch(), 10000);
 		stopSearch();
 
@@ -32,4 +48,15 @@
 	});
 </script>
 
-<Offis {monitors} secondsSinceLastRefetch={Math.floor(timeSinceLastRefetch)} />
+{#if data.stopids.length === 0}
+	<section class="content">
+		<h1>Keine Haltestellen angegeben</h1>
+		<p>
+			Beispiel : <a href="https://homeboard.bleff.xyz/?stopids=1409">
+				https://homeboard.bleff.xyz/?stopids=1409</a
+			>
+		</p>
+	</section>
+{:else}
+	<Offis {monitors} secondsSinceLastRefetch={Math.floor(timeSinceLastRefetch)} />
+{/if}
