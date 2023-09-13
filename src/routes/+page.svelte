@@ -41,10 +41,10 @@
 		const counterInterval = setInterval(updateCounter, 1000);
 		updateCounter(); // initial update
 
-		return () => {
+		/* 		return () => {
 			clearInterval(searchInterval);
 			clearInterval(counterInterval);
-		};
+		}; */
 	});
 </script>
 

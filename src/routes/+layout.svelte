@@ -2,14 +2,12 @@
 	import { navigating } from '$app/stores';
 	import Footer from './Footer.svelte';
 	import Header from './Header.svelte';
-	import Weather from '$lib/components/Weather.svelte';
 	import '$lib/style/app.css';
 	import Spinner from '$lib/components/Spinner.svelte';
 	import { setAuthContext } from '$lib/auth-context';
 </script>
 
 <main>
-	<Weather />
 	{#if $navigating}
 		<div class="spinner">
 			<Spinner />

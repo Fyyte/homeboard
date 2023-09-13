@@ -15,12 +15,12 @@
 			{#each monitor.lines as line}
 				<div class="line">
 					<div class="name">[{line.name}]</div>
-					<div class="direction">{line.towards}</div>
+					<div class="direction">{line.towards.substring(0, 16)}</div>
 					<div class="next">{line.departures.departure[0].departureTime.countdown} min</div>
 				</div>
 				<div class="line">
 					<div class="name">[{line.name}]</div>
-					<div class="direction">{line.towards}</div>
+					<div class="direction">{line.towards.substring(0, 16)}</div>
 					<div class="after">{line.departures.departure[1].departureTime.countdown} min</div>
 				</div>
 			{/each}
